@@ -14,18 +14,12 @@ class Rutas extends Model
     // Relación con Aeropuerto de salida
     public function salidaAeropuerto()
     {
-        return $this->belongsTo(Aeropuertos::class);
+        return $this->belongsTo(Aeropuertos::class, 'salida_aeropuerto_id');
     }
 
     // Relación con Aeropuerto de llegada
     public function llegadaAeropuerto()
     {
-        return $this->belongsTo(Aeropuertos::class);
-    }
-
-    // Relación con Vuelos (si lo tienes)
-    public function vuelos()
-    {
-        return $this->hasMany(Vuelos::class);
+        return $this->belongsTo(Aeropuertos::class, 'llegada_aeropuerto_id');
     }
 }
