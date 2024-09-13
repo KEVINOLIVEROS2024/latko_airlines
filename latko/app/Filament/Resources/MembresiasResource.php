@@ -27,7 +27,7 @@ class MembresiasResource extends Resource
                 Forms\Components\TextInput::make('nombre')
                 ->required()
                 ->maxLength(100),
-            Forms\Components\TextInput::make('descripción')
+            Forms\Components\TextInput::make('descripcion')
                 ->required()
                 ->maxLength(255),
             Forms\Components\TextInput::make('puntos_requeridos')

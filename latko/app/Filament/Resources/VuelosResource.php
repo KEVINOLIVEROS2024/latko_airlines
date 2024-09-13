@@ -24,17 +24,16 @@ class VuelosResource extends Resource
         return $form
             ->schema([
                 //
-                Forms\Components\Select::make('route_id')
-                ->relationship('route', 'departure_airport')
-                ->required(),
-            Forms\Components\Select::make('aircraft_id')
-                ->relationship('aircraft', 'model')
-                ->required(),
-            Forms\Components\DateTimePicker::make('departure_time')
-                ->required(),
-            Forms\Components\DateTimePicker::make('arrival_time')
-                ->required(),
-      
+                Forms\Components\Select::make('ruta_id')
+                    ->relationship('ruta', 'id')
+                    ->required(),
+                Forms\Components\Select::make('avion_id')
+                    ->relationship('avion', 'modelo')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('hora_salida')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('hora_llegada')
+                    ->required(),
             ]);
     }
 
@@ -43,13 +42,11 @@ class VuelosResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Columns\TextColumn::make('route.departureAirport.name')->label('Departure Airport'),
-                Tables\Columns\TextColumn::make('route.arrivalAirport.name')->label('Arrival Airport'),
-                Tables\Columns\TextColumn::make('aircraft.model'),
-                Tables\Columns\TextColumn::make('departure_time'),
-                Tables\Columns\TextColumn::make('arrival_time'),
-            
-            ])
+                Tables\Columns\TextColumn::make('ruta.id')->label('Ruta'),
+                Tables\Columns\TextColumn::make('avion.modelo')->label('Avión'),
+                Tables\Columns\TextColumn::make('hora_salida')->label('Hora de salida'),
+                Tables\Columns\TextColumn::make('hora_llegada')->label('Hora de llegada'),
+             ])
             ->filters([
                 //
             ])

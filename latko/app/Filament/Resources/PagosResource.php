@@ -30,7 +30,7 @@ class PagosResource extends Resource
             Forms\Components\TextInput::make('monto')
                 ->required()
                 ->numeric(),
-            Forms\Components\TextInput::make('metodo')
+            Forms\Components\TextInput::make('metodo_pago')
                 ->required()
                 ->maxLength(50),
        
@@ -43,7 +43,7 @@ class PagosResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('reserva.id')->label('Reserva ID'),
-                Tables\Columns\TextColumn::make('monto'),
+                Tables\Columns\TextColumn::make('monto')->money('usd', true),
                 Tables\Columns\TextColumn::make('metodo'),
             
             ])

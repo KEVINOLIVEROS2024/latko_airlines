@@ -25,23 +25,20 @@ class ReservasResource extends Resource
             ->schema([
                 //
                 Forms\Components\Select::make('cliente_id')
-                ->relationship('cliente', 'nombre')
-                ->required(),
-            Forms\Components\Select::make('vuelo_id')
-                ->relationship('vuelo', 'ruta.salidaAeropuerto')
-                ->required(),
-            Forms\Components\TextInput::make('asientos_reservados')
-                ->required()
-                ->numeric(),
-            Forms\Components\Select::make('estado')
-                ->options([
-                    'confirmed' => 'Confirmed',
-                    'pending' => 'Pending',
-                    'canceled' => 'Canceled',
-                ])
-                ->required(),
-       
-            ]);
+                    ->relationship('cliente', 'nombre')
+                    ->required(),
+                Forms\Components\Select::make('vuelo_id')
+                    ->relationship('vuelo', 'id')
+                    ->required(),
+                Forms\Components\TextInput::make('asientos_reservados')
+                    ->required(),
+                Forms\Components\Select::make('estado')
+                    ->options([
+                        'confirmado' => 'Confirmado',
+                        'cancelado' => 'Cancelado',
+                    ])
+                    ->required(),
+           ]);
     }
 
     public static function table(Table $table): Table
@@ -49,13 +46,11 @@ class ReservasResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Columns\TextColumn::make('customer.name')->label('Customer'),
-                Tables\Columns\TextColumn::make('flight.route.departureAirport.name')->label('Departure Airport'),
-                Tables\Columns\TextColumn::make('flight.route.arrivalAirport.name')->label('Arrival Airport'),
-                Tables\Columns\TextColumn::make('seats_booked'),
-                Tables\Columns\TextColumn::make('status'),
-           
-            ])
+                Tables\Columns\TextColumn::make('cliente.nombre')->label('Cliente'),
+                Tables\Columns\TextColumn::make('vuelo.id')->label('Vuelo'),
+                Tables\Columns\TextColumn::make('asientos_reservados'),
+                Tables\Columns\TextColumn::make('estado'),
+              ])
             ->filters([
                 //
             ])

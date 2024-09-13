@@ -43,7 +43,7 @@ class EquipajeResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('reserva.id')->label('Reserva ID'),
-                Tables\Columns\TextColumn::make('peso'),
+                Tables\Columns\TextColumn::make('peso')->suffix(' kg'),
                 Tables\Columns\TextColumn::make('tipo'),
            
             ])

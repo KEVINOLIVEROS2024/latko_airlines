@@ -24,16 +24,14 @@ class RutasResource extends Resource
         return $form
             ->schema([
                 //
-                Forms\Components\Select::make('departure_airport_id')
-                ->relationship('departureAirport', 'name')
-                ->required(),
-            Forms\Components\Select::make('arrival_airport_id')
-                ->relationship('arrivalAirport', 'name')
-                ->required(),
-            Forms\Components\TextInput::make('distance')
-                ->required()
-                ->numeric(),
-       
+                Forms\Components\Select::make('salida_aeropuerto_id')
+                    ->relationship('salidaAeropuerto', 'nombre')
+                    ->required(),
+                Forms\Components\Select::make('llegada_aeropuerto_id')
+                    ->relationship('llegadaAeropuerto', 'nombre')
+                    ->required(),
+                Forms\Components\TextInput::make('distancia')
+                    ->required(),
             ]);
     }
 
@@ -42,10 +40,9 @@ class RutasResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Columns\TextColumn::make('departureAirport.name')->label('Departure Airport'),
-                Tables\Columns\TextColumn::make('arrivalAirport.name')->label('Arrival Airport'),
-                Tables\Columns\TextColumn::make('distance'),
-           
+                Tables\Columns\TextColumn::make('salidaAeropuerto.nombre')->label('Aeropuerto de Salida'),
+                Tables\Columns\TextColumn::make('llegadaAeropuerto.nombre')->label('Aeropuerto de Llegada'),
+                Tables\Columns\TextColumn::make('distancia'),
             ])
             ->filters([
                 //
